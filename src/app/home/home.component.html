@@ -1,0 +1,21 @@
+<h1>Customers</h1>
+<button (click)="goToAddCustomer()">Create New Customer</button>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Password</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="customer" *ngFor="let customer of customers" [customer]="customer"></tr>
+  </tbody>
+
+  <button type="button"
+          class="btn btn-primary"
+          (click)="onClick()"
+          style="margin-top: 20px;"
+  >Show</button>
+</table>
