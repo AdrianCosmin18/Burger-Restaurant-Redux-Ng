@@ -18,7 +18,6 @@ export function customerReducer(
       return {
         ...state,
         customersList: action.customers,
-        //actiune: "get customers",
       };
     }
 
@@ -26,9 +25,23 @@ export function customerReducer(
       return {
         ...state,
         customersList: [...state.customersList, action.customer],
-        //actiune: 'add customer'
       }
     }
+
+    case Actions.UPDATE_CUSTOMER:{
+      return {
+        ...state,
+        customersList: [...state.customersList.filter(c => c.email != action.email), action.customer]
+      }
+    }
+
+    case Actions.DELETE_CUSTOMER:{
+      return {
+        ...state,
+        customersList: [...state.customersList.filter(c => c.email != action.email)]
+      }
+    }
+
     default:
       return state;
   }

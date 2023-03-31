@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Customer} from "./models/customer-model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: '.customer',
@@ -14,9 +15,13 @@ export class CustomerComponent implements OnInit {
     password: ''
   };
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  putUrl(){
+    return this.customer.email;
   }
 
 }
