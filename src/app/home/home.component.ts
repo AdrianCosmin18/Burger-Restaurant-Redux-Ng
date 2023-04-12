@@ -42,7 +42,10 @@ export class HomeComponent implements OnInit {
 
 
   onClick(){
-    this.getCustomers();
+    //this.getCustomers();
+
+    //la click se activeaza getCustomers => se creaza efectul de a lua clientii din bd
+    this.store.dispatch(new customerActions.GetCustomers(this.customers));
   }
 
   goToAddCustomer(){

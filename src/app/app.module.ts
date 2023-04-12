@@ -14,6 +14,8 @@ import * as fromApp from './store/app.reducer';
 import { AddCustomerComponent } from './addCustomer/add-customer/add-customer.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import {EffectsModule} from "@ngrx/effects";
+import {CustomerEffects} from "./store/customer.effects";
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
     StoreDevtoolsModule.instrument({logOnly: environment.production}),
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
+    EffectsModule.forRoot(([CustomerEffects]))
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,9 @@ import {Subscription} from "rxjs";
 import {CustomerService} from "../../services/customer.service";
 import {Router} from "@angular/router";
 import {Customer} from "../../home/customer/models/customer-model";
+import * as customerAction from "../../store/customer.action";
+import {Store} from "@ngrx/store";
+import * as fromApp from "../../store/app.reducer";
 
 @Component({
   selector: 'app-add-customer',
@@ -30,7 +33,10 @@ export class AddCustomerComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private service: CustomerService, private router: Router) { }
+  constructor(
+    private service: CustomerService,
+    private router: Router,
+    private store:Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
 
@@ -54,12 +60,17 @@ export class AddCustomerComponent implements OnInit, OnDestroy {
       password: this.myForm.get("password")?.value
     };
 
-    this.subscription.add(
-      this.service.addCustomer(customer).subscribe({
-        next: () => this.goHome(),
-        error: err => alert(err)
-      })
-    )
+    //comentat pentru a face cu effects
+
+    // this.subscription.add(
+    //   this.service.addCustomer(customer).subscribe({
+    //     next: () => this.goHome(),
+    //     error: err => alert(err)
+    //   })
+    // );
+
+    this.store.dispatch(new customerAction.AddCustomer(customer as Customer));
+    this.goHome();
   }
 
   ngOnDestroy(): void{

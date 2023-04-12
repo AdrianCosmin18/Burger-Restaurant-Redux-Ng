@@ -21,9 +21,10 @@ export class CustomerService {
 
   addCustomer(customer: Customer): Observable<void>{
 
-    let aux = customer;
-    aux.id = this.generateRandomId();
-    this.store.dispatch(new CustomerAction.AddCustomer(aux));
+    //comentat pentru a face cu effects
+    // let aux = customer;
+    // aux.id = this.generateRandomId();
+    // this.store.dispatch(new CustomerAction.AddCustomer(aux));
 
     return this.http.post<void>(this.url, customer)
       .pipe(catchError(this.handleError));

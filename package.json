@@ -17,6 +17,7 @@
     "@angular/forms": "^14.2.0",
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
+    "@ngrx/effects": "14.2",
     "@ngrx/router-store": "14.2",
     "@ngrx/store": "14.2",
     "@ngrx/store-devtools": "14.2",
