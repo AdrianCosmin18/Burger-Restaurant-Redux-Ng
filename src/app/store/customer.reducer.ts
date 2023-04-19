@@ -28,10 +28,10 @@ export function customerReducer(
       }
     }
 
-    case Actions.UPDATE_CUSTOMER:{
+    case Actions.UPDATE_CUSTOMER_SUCCESS:{
       return {
         ...state,
-        customersList: [...state.customersList.filter(c => c.email != action.email), action.customer]
+        customersList: [...state.customersList.filter(c => c.email != action.customer.email), action.customer]
       }
     }
 

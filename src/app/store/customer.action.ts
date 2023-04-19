@@ -7,6 +7,10 @@ export const ADD_CUSTOMER = "ADD CUSTOMER";
 export const ADD_CUSTOMER_SUCCESS = "ADD CUSTOMER SUCCESS";
 export const UPDATE_CUSTOMER = "UPDATE CUSTOMER";
 export const DELETE_CUSTOMER = "DELETE CUSTOMER";
+export const DELETE_CUSTOMER_SUCCESS = "DELETE_CUSTOMER_SUCCESS";
+
+export const UPDATE_CUSTOMER_SUCCESS = "DELETE UPDATE_CUSTOMER_SUCCESS";
+
 
 export class GetCustomers implements Action{
   readonly type = GET_CUSTOMERS;
@@ -35,6 +39,13 @@ export class UpdateCustomer implements Action{
   }
 }
 
+export class UpdateCustomerSuccess implements Action{
+  readonly type = UPDATE_CUSTOMER_SUCCESS;
+
+  constructor(public customer: Customer) {
+  }
+}
+
 export class DeleteCustomer implements Action{
   readonly type = DELETE_CUSTOMER;
 
@@ -42,5 +53,12 @@ export class DeleteCustomer implements Action{
   }
 }
 
+export class DeleteCustomerSuccess implements Action{
+  readonly type = DELETE_CUSTOMER_SUCCESS;
 
-export type CustomerListAction = GetCustomers | AddCustomer | UpdateCustomer | DeleteCustomer;
+  constructor() {
+  }
+}
+
+
+export type CustomerListAction = GetCustomers | AddCustomer | UpdateCustomer | DeleteCustomer | AddCustomerSuccess| UpdateCustomerSuccess | DeleteCustomerSuccess;

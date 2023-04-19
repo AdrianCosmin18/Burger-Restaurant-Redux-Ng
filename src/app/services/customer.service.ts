@@ -19,30 +19,33 @@ export class CustomerService {
       .pipe(catchError(this.handleError));
   }
 
-  addCustomer(customer: Customer): Observable<void>{
+  addCustomer(customer: Customer): Observable<Customer>{
 
     //comentat pentru a face cu effects
+
     // let aux = customer;
     // aux.id = this.generateRandomId();
     // this.store.dispatch(new CustomerAction.AddCustomer(aux));
 
-    return this.http.post<void>(this.url, customer)
+    return this.http.post<Customer>(this.url, customer)
       .pipe(catchError(this.handleError));
   }
 
-  updateCustomer(email: string, customer: Customer): Observable<void>{
-    let aux = customer;
-    aux.id = this.generateRandomId();
-    this.store.dispatch(new CustomerAction.UpdateCustomer(email, aux));
+  updateCustomer(email: string, customer: Customer): Observable<Customer>{
+
+    //comentat pentru a face cu effects
+    // let aux = customer;
+    // aux.id = this.generateRandomId();
+    // this.store.dispatch(new CustomerAction.UpdateCustomer(email, aux));
 
     let path = `${this.url}/${email}`;
-    return this.http.put<void>(path, customer)
+    return this.http.put<Customer>(path, customer)
       .pipe(catchError(this.handleError));
   }
 
   deleteCustomer(email: string): Observable<void>{
 
-    this.store.dispatch(new CustomerAction.DeleteCustomer(email));
+    //this.store.dispatch(new CustomerAction.DeleteCustomer(email));
     let path = `${this.url}/delete-customer/${email}`;
     return this.http.delete<void>(path)
       .pipe(catchError(this.handleError));
